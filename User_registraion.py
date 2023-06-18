@@ -101,9 +101,9 @@ def check_Phone_number():
 
 def main():
     print("------User registraion-----")
-    # check_first__name()
-    # check_Last__name()
-    # check_Email()
+    check_first__name()
+    check_Last__name()
+    check_Email()
     check_Phone_number()
     
 
