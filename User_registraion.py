@@ -7,7 +7,7 @@
 
 @Last Modified time: 2023-06-18 23:32:30
 
-@Title : User registration UC 6 User need to enter a Password Rule2: it should Upper case Charachter
+@Title : User registration UC 6 User need to enter a Password Rule3: it should have atleast 1 number
 '''
 
 import re 
@@ -108,7 +108,7 @@ def check_password():
     """
     while(True):
         password=input("Enter Pasword : ")
-        pattern=r'^(?=.*[A-Z]).{8,}$'
+        pattern=r'^(?=.*[A-Z])(?=.*\d).{8,}$'
         validate=re.match(pattern,password)
         if validate:
             logger.info(" Password set successfully")
@@ -117,8 +117,10 @@ def check_password():
             logger.error("Invalid Password. Please make sure the password meets the following requirements:")
             logger.error("- Minimum 8 characters")
             logger.error("- At least one uppercase letter")
-            
-            
+            logger.error("- At least one numeric digit")
+
+
+
 def main():
     print("------User registraion-----")
     check_first__name()
