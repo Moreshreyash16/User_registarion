@@ -1,13 +1,13 @@
 '''
 @Author: Shreyash More
 
-@Date: 2023-06-18 23:11:30
+@Date: 2023-06-18 15:10:30
 
 @Last Modified by: Shreyash More
 
-@Last Modified time: 2023-06-18 23:32:30
+@Last Modified time: 2023-06-18 15:10:30
 
-@Title : User registration UC 6 User need to enter a Password Rule3: it should have atleast 1 number
+@Title : User registration UC 8 User need to enter a Password Rule4: it should have atleast 1 number
 '''
 
 import re 
@@ -108,16 +108,15 @@ def check_password():
     """
     while(True):
         password=input("Enter Pasword : ")
-        pattern=r'^(?=.*[A-Z])(?=.*\d).{8,}$'
+        pattern= r'^(?=.*[0-9])(?=.*[A-Z])(?=.*[~!@#$%^&*_])(?!.*[~!@#$%^&*_].*[~!@#$%^&*_]).{8,}$'
         validate=re.match(pattern,password)
         if validate:
             logger.info(" Password set successfully")
             break
         else:
-            logger.error("Invalid Password. Please make sure the password meets the following requirements:")
-            logger.error("- Minimum 8 characters")
-            logger.error("- At least one uppercase letter")
-            logger.error("- At least one numeric digit")
+            logger.error("Invalid Password  ")
+
+
 
 
 
