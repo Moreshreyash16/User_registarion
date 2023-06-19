@@ -114,9 +114,11 @@ def check_password():
             logger.info(" Password set successfully")
             break
         else:
-            logger.error("Invalid Password  ")
-
-
+            logger.error("Invalid Password. Please make sure the password meets the following requirements:")
+            logger.error("- Minimum 8 characters")
+            logger.error("- At least one uppercase letter")
+            
+            
 def main():
     print("------User registraion-----")
     check_first__name()
