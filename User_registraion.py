@@ -7,7 +7,7 @@
 
 @Last Modified time: 2023-06-18 15:10:30
 
-@Title : User registration UC 8 User need to enter a Password Rule4: it should have atleast 1 number
+@Title : User registration UC 8 User need to enter a email address
 '''
 
 import re 
@@ -59,7 +59,7 @@ def check_Last__name():
         else:
             logger.error("Last Name is Not valid ")
 
-def check_Email():
+def check_Email(email):
     """
     Description:
         It Validates Email Address
@@ -68,15 +68,12 @@ def check_Email():
     Return:
         None
     """
-    while(True):
-        email=input("Enter Email : ")
-        pattern=r'^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)(\.[a-zA-Z]{2,})*$'
-        validate=re.match(pattern,email)
-        if validate:
-            logger.info("Email is Valid ")
-            break
-        else:
-            logger.error("Email is Not valid ")
+    pattern=r'^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)(\.[a-zA-Z]{2,})*$'
+    validate=re.match(pattern,email)
+    if validate:
+        logger.info("Email is Valid ")
+    else:
+        logger.error(f"{email} is Not valid ")
 
 def check_Phone_number():
     """
@@ -126,7 +123,9 @@ def main():
     print("------User registraion-----")
     check_first__name()
     check_Last__name()
-    check_Email()
+    email_address=["abc.xyz@gmail.com","abc@bl.co.in","adc@bl.co","abc.ert@ada.wd","abc.com"]
+    for email in email_address:
+        check_Email(email)
     check_Phone_number()
     check_password()
     
