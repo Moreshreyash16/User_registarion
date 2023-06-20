@@ -21,7 +21,7 @@ handlers=[
     # Create a logger
 logger = logging.getLogger('my_logger')
 
-def check_first__name():
+def check_first__name(first_name):
     """
         Description:
             It Validates first name 
@@ -30,17 +30,17 @@ def check_first__name():
         Return:
             None
         """
-    while(True):
-        name=input("Enter First name : ")
-        pattern=r'^[A-Z][a-zA-Z]{2,}$'
-        validate=re.match(pattern,name)
-        if validate:
-            logger.info("First Name is Valid ")
-            break
-        else:
-            logger.error("First Name is Not valid ")
 
-def check_Last__name():
+    pattern=r'^[A-Z][a-zA-Z]{2,}$'
+    validate=re.match(pattern,first_name)
+    if validate:
+        logger.info("First Name is Valid ")
+        return True
+    else:
+        logger.error("First Name is Not valid \n")
+        return False
+
+def check_last__name(last_name):
     """
     Description:
         It Validates Last name 
@@ -49,16 +49,16 @@ def check_Last__name():
     Return:
         None
     """
-    while(True):
-        name=input("Enter Last name : ")
-        pattern=r'^[A-Z][a-zA-Z]{2,}$'
-        validate=re.match(pattern,name)
-        if validate:
-            logger.info("Last Name is Valid ")
-            break
-        else:
-            logger.error("Last Name is Not valid ")
 
+    pattern=r'^[A-Z][a-zA-Z]{2,}$'
+    validate=re.match(pattern,last_name)
+    if validate:
+        logger.info("Last Name is Valid ")
+        return True
+    else:
+        logger.error("Last Name is Not valid \n")
+        return False
+    
 def check_Email(email):
     """
     Description:
@@ -68,14 +68,16 @@ def check_Email(email):
     Return:
         None
     """
-    pattern=r'^[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(\.[a-zA-Z0-9]+)(\.[a-zA-Z]{2,})*$'
+    pattern=r'^[a-zA-Z0-9\+-]+(\.[a-zA-Z0-9]+)*@[a-zA-Z0-9]+(\.[a-zA-Z]{2,})$'
     validate=re.match(pattern,email)
     if validate:
-        logger.info("Email is Valid ")
+        logger.info(f"{email} is Valid ")
+        return True
     else:
-        logger.error(f"{email} is Not valid ")
+        logger.error(f"{email} is Not valid \n")
+        return False
 
-def check_Phone_number():
+def check_Phone_number(phone_no):
     """
     Description:
         It Validates PhoneNumber
@@ -84,17 +86,16 @@ def check_Phone_number():
     Return:
         None
     """
-    while(True):
-        phone_no=input("Enter Phone number : ")
-        pattern=r'^[7-9]\d\s\d{10}$'
-        validate=re.match(pattern,phone_no)
-        if validate:
-            logger.info(" Valid Phone number ")
-            break
-        else:
-            logger.error("Invalid Phone number ")
-
-def check_password():
+    pattern=r'^[7-9]\d\s\d{10}$'
+    validate=re.match(pattern,phone_no)
+    if validate:
+        logger.info(" Valid Phone number ")
+        return True
+    else:
+        logger.error("Invalid Phone number \n")
+        return False
+    
+def check_password(password):
     """
     Description:
         It Validates PhoneNumber
@@ -103,29 +104,32 @@ def check_password():
     Return:
         None
     """
-    while(True):
-        password=input("Enter Pasword : ")
-        pattern= r'^(?=.*[0-9])(?=.*[A-Z])(?=.*[~!@#$%^&*_])(?!.*[~!@#$%^&*_].*[~!@#$%^&*_]).{8,}$'
-        validate=re.match(pattern,password)
-        if validate:
-            logger.info(" Password set successfully")
-            break
-        else:
-            logger.error("Invalid Password  ")
-
-
-
-
+    
+    pattern= r'^(?=.*[0-9])(?=.*[A-Z])(?=.*[~!@#$%^&*_])(?!.*[~!@#$%^&*_].*[~!@#$%^&*_]).{8,}$'
+    validate=re.match(pattern,password)
+    if validate:
+        return True
+    else:
+        return False
 
 def main():
     print("------User registraion-----")
-    check_first__name()
-    check_Last__name()
-    email_address=["abc.xyz@gmail.com","abc@bl.co.in","adc@bl.co","abc.ert@ada.wd","abc.com"]
+    fname=input("Enter First name : ")
+    check_first__name(fname)
+    
+    lname=input("Enter Last name : ")
+    check_last__name(lname)
+    
+    email_address=["abc","abc@.com.my","abc123@gmail.a-","abc123@.com","abc123@.com.com",".abc@abc.com","abc()*@gmail.com","abc@%*.com","abc..2002@gmail.com","abc.@gmail.com","abc@abc@gmail.com","abc@gmail.com.1a","abc@gmail.com.aa.au"]
+
     for email in email_address:
         check_Email(email)
-    check_Phone_number()
-    check_password()
+    
+    phone_no=input("Enter Phone number : ")
+    check_Phone_number(phone_no)
+    
+    password=input("Enter Pasword : ")
+    check_password(password)
     
 
 
